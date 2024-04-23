@@ -27,9 +27,9 @@ export default function SelectLabels() {
           <MenuItem value="">
             <em>Tipos de consultas:</em>
           </MenuItem>
-          <MenuItem value={10}>Saldo</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={10}>General</MenuItem>
+          <MenuItem value={20}>Fechas de cortes</MenuItem>
+          <MenuItem value={30}>Extractos</MenuItem>
         </Select>
         
       </FormControl>

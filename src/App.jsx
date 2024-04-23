@@ -2,10 +2,12 @@ import React, {useState} from 'react';
 import AlertDialog from './components/alert'
 import ResponsiveAppBar from './components/Navbar';
 import SelectLabels from './components/Consulta';
+import Consulta from './components/tarjetas';
 
 function App() {
 const [alert, setAlert] = useState({disable: false, message: '', title: ''})
-const [id, setId]=useState(null)
+const [id, setId] = useState(null)
+const [userTarjetaData, setUserTarjetaData] = useState(null)
 
 const [user, setUser]=useState(
   {
@@ -15,12 +17,19 @@ const [user, setUser]=useState(
   }
 )
 
+async function fetchData(){
+  const response = await fetch(`http://localhost:3001/tarjetas/${id}`)
+  const userTarjeta = await response.json()
+  setUserTarjetaData(userTarjeta)
+}
+
 async function consultarId (e) {
   e.preventDefault()
   if (!id){
     setAlert({disable: true, message: 'Campo vacio', title: 'Error'})
     return
   }
+
   const response = await fetch(`http://localhost:3001/user/${id}`)
   const userData = await response.json()
   console.log('llegando datos', userData)
@@ -30,6 +39,7 @@ async function consultarId (e) {
   }
 
 setUser(userData)
+await fetchData()
 
 }
 console.log(alert.disable)
@@ -78,7 +88,8 @@ console.log(alert.disable)
           </div>
         </div>
       </div>
-    <SelectLabels />
+    {/* <SelectLabels />  */}
+    <Consulta  tarjetaData={userTarjetaData}/>
     </>
   );
 }
