@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import AlertDialog from './components/alert'
+import ResponsiveAppBar from './components/Navbar';
+import SelectLabels from './components/Consulta';
 
 function App() {
 const [alert, setAlert] = useState({disable: false, message: '', title: ''})
@@ -16,7 +18,7 @@ const [user, setUser]=useState(
 async function consultarId (e) {
   e.preventDefault()
   if (!id){
-    setAlert({disable: true, message: 'Id no digitado', title: 'Error'})
+    setAlert({disable: true, message: 'Campo vacio', title: 'Error'})
     return
   }
   const response = await fetch(`http://localhost:3001/user/${id}`)
@@ -34,12 +36,9 @@ console.log(alert.disable)
   return (
     <>
       <AlertDialog options={alert} setAlert={setAlert}/>
-      <div className="text-center mt-4 mb-5 text-danger bg-danger bg-opacity-25 shadow">
-        
-        <h1>SCOTIABANK</h1>
-      </div>
+      <ResponsiveAppBar />
 
-      <div className="container">
+      <div className="container mt-5">
         <div className="card shadow">
           <div className="card-body">
             <form>
@@ -79,29 +78,7 @@ console.log(alert.disable)
           </div>
         </div>
       </div>
-
-      <div className="container text-center">
-        <div className="row row-cols-3 row-cols-lg-3 mt-3">
-          <div className="col">
-            <button type="button" className="btn btn-outline-danger btn-lg shadow">Consultas</button>
-          </div>
-          <div className="col">
-            <button type="button" className="btn btn-outline-danger btn-lg shadow">2</button>
-          </div>
-          <div className="col">
-            <button type="button" className="btn btn-outline-danger btn-lg shadow">3</button>
-          </div>
-          <div className="col">
-            <button type="button" className="btn btn-outline-danger btn-lg shadow">4</button>
-          </div>
-          <div className="col">
-            <button type="button" className="btn btn-outline-danger btn-lg shadow">5</button>
-          </div>
-          <div className="col">
-            <button type="button" className="btn btn-outline-danger btn-lg shadow">6</button>
-          </div>
-        </div>
-      </div>
+    <SelectLabels />
     </>
   );
 }
