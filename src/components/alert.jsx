@@ -40,10 +40,6 @@ export default function AlertDialog({options, setAlert}) {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Disagree</Button>
-          <Button onClick={handleClose} autoFocus>
-            Agree
-          </Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

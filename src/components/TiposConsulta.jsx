@@ -5,11 +5,12 @@ import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export default function SelectLabels() {
-  const [consulta, setAge] = React.useState('');
+export default function TiposConsulta({handleTipoconsulta}) {
+  const [consulta, setConsulta] = React.useState('');
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setConsulta(event.target.value);
+    handleTipoconsulta(event.target.value)
   };
 
   return (
@@ -27,9 +28,9 @@ export default function SelectLabels() {
           <MenuItem value="">
             <em>Tipos de consultas:</em>
           </MenuItem>
-          <MenuItem value={10}>General</MenuItem>
-          <MenuItem value={20}>Fechas de cortes</MenuItem>
-          <MenuItem value={30}>Extractos</MenuItem>
+          <MenuItem value={"general"}>General</MenuItem>
+          <MenuItem value={"fechaCorte"}>Fechas de cortes</MenuItem>
+          <MenuItem value={"extractos"}>Extractos</MenuItem>
         </Select>
         
       </FormControl>
