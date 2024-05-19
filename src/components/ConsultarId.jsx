@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import AlertDialog from './alert'
+import Swal from 'sweetalert2';
 
 
 
 export default function ConsultarId({fetchTarjetas}) {
-    const [alert, setAlert] = useState({ disable: false, message: '', title: '' })
     const [id, setId] = useState(null)
     const [user, setUser] = useState(
         {
@@ -18,16 +17,25 @@ export default function ConsultarId({fetchTarjetas}) {
     async function consultarId(e) {
         e.preventDefault()
         if (!id) {
-            setAlert({ disable: true, message: 'Campo vacio', title: 'Error' })
-            return
+            return Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Campo vacio",
+                confirmButtonColor: "#ec111a"
+              });
         }
 
         const response = await fetch(`http://localhost:3001/user/${id}`)
         const userData = await response.json()
         console.log('llegando datos', userData)
         if (!userData) {
-            setAlert({ disable: true, message: 'Usuario no encontrado', title: 'Error' })
-            return
+            return Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Usuario no encontrado",
+                confirmButtonColor: "#ec111a"
+              });
+            
         }
 
         setUser(userData)
@@ -38,7 +46,6 @@ export default function ConsultarId({fetchTarjetas}) {
 
         <>
 
-            <AlertDialog options={alert} setAlert={setAlert} />
 
             <div className="container mt-5">
                 <div className="card shadow">

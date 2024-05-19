@@ -5,11 +5,17 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import LlamadasGrafica from './components/LlamadasGrafica.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App/>,
+  }
+  ,
+  {
+    path: "/estadistica",
+    element: <LlamadasGrafica/>
   },
 ]);
 
