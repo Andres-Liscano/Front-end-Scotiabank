@@ -29,7 +29,7 @@ export default function TiposConsulta({handleTipoconsulta}) {
             <em>Tipos de consultas:</em>
           </MenuItem>
           <MenuItem value={"general"}>General</MenuItem>
-          <MenuItem value={"fechaCorte"}>Fechas de cortes</MenuItem>
+          <MenuItem value={"fechaCorte"}>Cupo</MenuItem>
           <MenuItem value={"extractos"}>Extractos</MenuItem>
         </Select>
         
