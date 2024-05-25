@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 
 
 
-export default function ConsultarId({fetchTarjetas}) {
+export default function ConsultarId({setIdUsuario}) {
     const [id, setId] = useState(null)
     const [user, setUser] = useState(
         {
@@ -39,7 +39,7 @@ export default function ConsultarId({fetchTarjetas}) {
         }
 
         setUser(userData)
-        await fetchTarjetas(id)
+        setIdUsuario(id)
 
     }
     return (
