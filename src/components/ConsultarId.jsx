@@ -79,8 +79,6 @@ export default function ConsultarId({setIdUsuario}) {
                                     <td>{user.id_usuario}</td>
                                     <td>{user.nombre}</td>
                                     <td>{user.telefono}</td>
-                                    <td><button className="btn btn-primary btn-sm">Edit</button></td>
-                                    <td><a href="#" className="btn btn-danger btn-sm">Delete</a></td>
                                 </tr>
                             </tbody>
                         </table>
